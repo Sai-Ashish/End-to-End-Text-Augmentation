@@ -204,10 +204,10 @@ class Architect(object):
         
         try:
             # Exponential moving average of gradient values
-            exp_avg = _concat(optimizer.state[v]['exp_avg'] for v in self.classifier.parameters())
+            exp_avg = _concat(classifier_optimizer.state[v]['exp_avg'] for v in self.classifier.parameters())
             # Exponential moving average of squared gradient values
-            exp_avg_sq = _concat(optimizer.state[v]['exp_avg_sq'] for v in self.classifier.parameters())
-            step = _concat(torch.ones_like(optimizer.state[v]['exp_avg'])*optimizer.state[v]['step'] for v in self.classifier.parameters())
+            exp_avg_sq = _concat(classifier_optimizer.state[v]['exp_avg_sq'] for v in self.classifier.parameters())
+            step = _concat(torch.ones_like(classifier_optimizer.state[v]['exp_avg'])*classifier_optimizer.state[v]['step'] for v in self.classifier.parameters())
         
         except:
             step = torch.zeros_like(theta)
