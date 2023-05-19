@@ -65,6 +65,8 @@ def get_classifierDataset(tokenizer):
     batch = dataset['train']['sentence']
     labels = dataset['train']['label']
     
+    # load the test data for model evaluation seperately.
+    
     # shuffle the data
     data = list(zip(batch, labels))
     random.shuffle(data)
