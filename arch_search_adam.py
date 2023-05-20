@@ -467,6 +467,8 @@ def main():
     # Validation dataset
     test_classifier  = DataLoader(train_data_classifier, batch_size=args.clf_batch_size, 
                                   sampler=SubsetRandomSampler(indices[2*split:]), pin_memory=True, num_workers=0)
+    
+    # load test set seperately for inference
 
     print(len(indices[:split]))
     
