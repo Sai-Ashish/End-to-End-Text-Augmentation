@@ -458,12 +458,13 @@ def main():
     
     # change the NUM_WORKERS to 2
     # Create the DataLoader for our training set.
+    # MLO-train
     train_classifier = DataLoader(train_data_classifier, batch_size=args.clf_batch_size, 
                                   sampler=SubsetRandomSampler(indices[:split]), pin_memory=True, num_workers=0)
-
+    # MLO-validation
     valid_classifier = DataLoader(train_data_classifier, batch_size=args.clf_batch_size, 
                                   sampler=SubsetRandomSampler(indices[split:2*split]), pin_memory=True, num_workers=0)
-
+    # Validation dataset
     test_classifier  = DataLoader(train_data_classifier, batch_size=args.clf_batch_size, 
                                   sampler=SubsetRandomSampler(indices[2*split:]), pin_memory=True, num_workers=0)
 
